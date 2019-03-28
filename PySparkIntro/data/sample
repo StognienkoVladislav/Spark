@@ -1,0 +1,4 @@
+SparkContext Example – PySpark Shell
+Now that you know enough about SparkContext, let us run a simple example on PySpark shell. In this example, we will be counting the number of lines with character 'a' or 'b' in the README.md file. So, let us say if there are 5 lines in a file and 3 lines have the character 'a', then the output will be → Line with a: 3. Same will be done for character ‘b’.
+
+Note − We are not creating any SparkContext object in the following example because by default, Spark automatically creates the SparkContext object named sc, when PySpark shell starts. In case you try to create another SparkContext object, you will get the following error – "ValueError: Cannot run multiple SparkContexts at once".
