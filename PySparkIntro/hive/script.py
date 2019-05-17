@@ -4,12 +4,9 @@ from pyspark import SparkContext
 from pyspark.sql import SparkSession, HiveContext
 
 
-sc = SparkContext("local", "Spark Hive App")
-
 spark = SparkSession.builder.\
     master('local').\
-    config('spark.sql.warehouse.dir', '/user/hive/warehouse').\
-    config('hive.metastore.uris', 'thrift://localhost:9083').\
+    config('hive.metastore.uris', 'thrift://localhost:9083'). \
     enableHiveSupport().\
     getOrCreate()
 
@@ -24,7 +21,10 @@ spark = SparkSession.builder.\
 # check.show()
 
 spark.sql("show databases").show()
-spark.sql('select * from test_db.hive_test').show()
+# spark.sql('create role role_sample')
+# spark.sql('select * from sample.table1').show()
+# spark.sql('use sample').show()
+# spark.sql('show tables').show()
 
 # spark.sql("select * from src").show()
 # spark.sql("select * from default.employee").show()
