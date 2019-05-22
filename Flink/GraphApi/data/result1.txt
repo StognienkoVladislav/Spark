@@ -1,0 +1,7 @@
+(salesh,2.0)
+(Bob,2.0)
+(Samita,2.0)
+(loopa,2.0)
+(Billy,2.0)
+(Merry,2.0)
+(Katy,2.0)
