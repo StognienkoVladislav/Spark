@@ -63,9 +63,3 @@
   val picard: String = "Picard"                   //> picard  : String = Picard
   val bestCaptain: String = "Picard"              //> bestCaptain  : String = Picard
   val isBest: Boolean = picard == bestCaptain     //> isBest  : Boolean = true
-
-  // EXERCISE
-  // Write some code that takes the value of pi, doubles it, and then prints it within a string with
-  // three decimal places of precision to the right.
-  // Just write your code below here; any time you save the file it will automatically display the results!
-

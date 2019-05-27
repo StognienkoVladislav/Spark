@@ -99,14 +99,3 @@
   val archersShip = util.Try(shipMap("Archer")) getOrElse "Unknown"
   //> archersShip  : String = Unknown
   println(archersShip)                              //> Unknown
-
-  // EXERCISE
-  // Create a list of the numbers 1-20; your job is to print out numbers that are evenly divisible by three. (Scala's
-  // modula operator, like other languages, is %, which gives you the remainder after division. For example, 9 % 3 = 0
-  // because 9 is evenly divisible by 3.) Do this first by iterating through all the items in the list and testing each
-  // one as you go. Then, do it again by using a filter function on the list instead.
-
-  // That's enough for now!
-  // There is MUCH more to learn about Scala. We didn't cover many other collection types, including mutable collections.
-  // And we didn't even touch on object-oriented Scala. The book "Learning Scala" from O'Reilly is great if you want to
-  // go into more depth - but you've got enough to get through this course for now.

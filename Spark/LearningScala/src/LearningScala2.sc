@@ -64,8 +64,3 @@
   {val x = 10; x + 20}                           //> res0: Int = 30
 
   println({val x = 10; x + 20})            //> 30
-
-  // EXERCISE
-  // Write some code that prints out the first 10 values of the Fibonacci sequence.
-  // This is the sequence where every number is the sum of the two numbers before it.
-  // So, the result should be 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
