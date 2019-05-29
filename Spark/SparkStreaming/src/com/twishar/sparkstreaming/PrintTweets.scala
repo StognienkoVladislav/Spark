@@ -1,5 +1,3 @@
-
-
 package com.twishar.sparkstreaming
 
 import org.apache.spark._
