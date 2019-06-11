@@ -10,32 +10,32 @@ import java.util.regex.Matcher
 
 import Utilities._
 
-import org.apache.spark.streaming.kafka._
-import kafka.serializer.StringDecoder
-
-/** Working example of listening for log data from Kafka's testLogs topic on port 9092. */
-object KafkaExample {
+ import org.apache.spark.streaming.Duration
+ import org.apache.spark.streaming.kinesis._
+ import com.amazonaws.services.kinesis.clientlibrary.lib.worker.InitialPositionInStream
+ 
+/** Example of connecting to Amazon Kinesis Streaming and listening for log data. */
+object KinesisExample {
   
   def main(args: Array[String]) {
 
     // Create the context with a 1 second batch size
-    val ssc = new StreamingContext("local[*]", "KafkaExample", Seconds(1))
+    val ssc = new StreamingContext("local[*]", "KinesisExample", Seconds(1))
     
     setupLogging()
     
     // Construct a regular expression (regex) to extract fields from raw Apache log lines
     val pattern = apacheLogPattern()
 
-    // hostname:port for Kafka brokers, not Zookeeper
-    val kafkaParams = Map("metadata.broker.list" -> "localhost:9092")
-    // List of topics you want to listen for from Kafka
-    val topics = List("testLogs").toSet
-    // Create our Kafka stream, which will contain (topic,message) pairs. We tack a 
-    // map(_._2) at the end in order to only get the messages, which contain individual
-    // lines of data.
-    val lines = KafkaUtils.createDirectStream[String, String, StringDecoder, StringDecoder](
-      ssc, kafkaParams, topics).map(_._2)
+    // Create a Kinesis stream. You must create an app name unique for this region, and specify
+    // stream name, Kinesis endpoint, and region you want. 
+    val kinesisStream = KinesisUtils.createStream(
+     ssc, "Unique App Name", "Stream Name", "kinesis.us-east-1.amazonaws.com",
+     "us-east-1", InitialPositionInStream.LATEST, Duration(2000), StorageLevel.MEMORY_AND_DISK_2)
      
+    // This gives you a byte array for each message. Let's assume these represent strings.
+    val lines = kinesisStream.map(x => new String(x))
+    
     // Extract the request field from each log line
     val requests = lines.map(x => {val matcher:Matcher = pattern.matcher(x); if (matcher.matches()) matcher.group(5)})
     
