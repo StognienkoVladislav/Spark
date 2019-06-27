@@ -14,7 +14,7 @@ public class AverageProfit
 		// set up the streaming execution environment
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		DataStream<String> data = env.readTextFile("/home/vstohniienko/projects/Spark/Flink/AverageProfit/data/avg");
+		DataStream<String> data = env.readTextFile("/home/vstohniienko/projects/Spark-Flink/Flink/AverageProfit/data/avg");
 
 		// month, product, category, profit, count
 		DataStream<Tuple5<String, String, String, Integer, Integer>> mapped = data.map(new Splitter());      // tuple  [June,Category5,Bat,12,1]
