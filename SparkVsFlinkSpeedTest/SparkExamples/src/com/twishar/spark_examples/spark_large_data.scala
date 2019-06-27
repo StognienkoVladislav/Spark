@@ -1,4 +1,4 @@
-package spark_vgsales
+package com.twishar.spark_examples
 
 object spark_large_data {
 
@@ -11,7 +11,7 @@ object spark_large_data {
       .format("csv")
       .option("header", "true") //first line in file has headers
       .option("mode", "DROPMALFORMED")
-      .load("/home/vstohniienko/projects/gener_datasets/data_16_gb.csv")
+      .load("/home/vstohniienko/projects/gener_datasets/data_1_gb.csv")
 
     // Convert these words to lowercase
     input.createTempView("sample_large")
